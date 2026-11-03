@@ -1,0 +1,54 @@
+# ================= DANGER/SECRETS =================
+# Never commit credentials or local environment files
+.env
+application-local.properties
+application-local.yml
+
+# ================= MAVEN / BUILD =================
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.nextBackup
+pom.xml.maven-backup
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+.mvn/wrapper/maven-wrapper.jar
+
+# ================= IDEs & EDITORS =================
+# IntelliJ IDEA
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+
+# Eclipse / STS
+.classpath
+.project
+.settings/
+bin/
+
+# VS Code
+.vscode/
+*.code-workspace
+
+# ================= OPERATING SYSTEMS =================
+# macOS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+
+# Windows
+Thumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# ================= LOGS & TEMP =================
+*.log
+*.sqlite
+logs/
+temp/

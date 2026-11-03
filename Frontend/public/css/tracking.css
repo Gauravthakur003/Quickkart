@@ -1,0 +1,589 @@
+
+/* =========================================================
+   QuickKart - Order Tracking Page
+   File: css/tracking.css
+   ========================================================= */
+
+:root {
+    --tracking-primary: #ff9900;
+    --tracking-primary-dark: #e68a00;
+    --tracking-dark: #131921;
+    --tracking-text: #232f3e;
+    --tracking-muted: #64748b;
+    --tracking-border: #e5e7eb;
+    --tracking-background: #f5f7fb;
+    --tracking-success: #16a34a;
+    --tracking-danger: #dc2626;
+    --tracking-white: #ffffff;
+    --tracking-radius: 14px;
+    --tracking-shadow: 0 8px 28px rgba(15, 23, 42, 0.06);
+}
+
+/* ---------- Base ---------- */
+
+body {
+    background: var(--tracking-background);
+    color: var(--tracking-text);
+}
+
+.tracking-page {
+    width: min(1120px, calc(100% - 40px));
+    margin: 36px auto 60px;
+}
+
+.tracking-page h1,
+.tracking-page h2,
+.tracking-page h3,
+.tracking-page p {
+    margin-top: 0;
+}
+
+.tracking-page a {
+    text-decoration: none;
+}
+
+/* ---------- Page heading ---------- */
+
+.tracking-page-header {
+    margin-bottom: 26px;
+}
+
+.tracking-page-header h1 {
+    margin-bottom: 8px;
+    font-size: clamp(26px, 4vw, 34px);
+    font-weight: 750;
+    letter-spacing: -0.8px;
+}
+
+.tracking-page-header p {
+    color: var(--tracking-muted);
+    font-size: 15px;
+    line-height: 1.7;
+}
+
+/* ---------- Main tracking card ---------- */
+
+.tracking-card.card {
+    padding: 32px;
+    overflow: hidden;
+    background: var(--tracking-white);
+    border: 1px solid var(--tracking-border);
+    border-radius: var(--tracking-radius);
+    box-shadow: var(--tracking-shadow);
+}
+
+.tracking-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+    padding-bottom: 26px;
+    border-bottom: 1px solid var(--tracking-border);
+}
+
+.tracking-header h1,
+.tracking-header h2 {
+    margin-bottom: 8px;
+}
+
+.tracking-header p {
+    margin-bottom: 0;
+    color: var(--tracking-muted);
+    font-size: 14px;
+}
+
+#trackingOrderId {
+    overflow-wrap: anywhere;
+    font-weight: 700;
+}
+
+/* ---------- Status badge ---------- */
+
+.order-status {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    min-height: 34px;
+    padding: 7px 14px;
+    border: 1px solid #fed7aa;
+    border-radius: 999px;
+    background: #fff7ed;
+    color: #9a3412;
+    font-size: 12px;
+    font-weight: 750;
+    letter-spacing: 0.2px;
+}
+
+.order-status.placed {
+    background: #eff6ff;
+    color: #1d4ed8;
+    border-color: #bfdbfe;
+}
+
+.order-status.packed {
+    background: #fff7ed;
+    color: #9a3412;
+    border-color: #fed7aa;
+}
+
+.order-status.shipped,
+.order-status.out-for-delivery {
+    background: #f5f3ff;
+    color: #6d28d9;
+    border-color: #ddd6fe;
+}
+
+.order-status.delivered {
+    background: #f0fdf4;
+    color: #166534;
+    border-color: #bbf7d0;
+}
+
+.order-status.cancelled {
+    background: #fef2f2;
+    color: #b91c1c;
+    border-color: #fecaca;
+}
+
+/* ---------- Tracking timeline ---------- */
+
+.tracking-progress {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 0;
+    padding: 42px 8px 38px;
+}
+
+.tracking-step {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex: 0 0 100px;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    text-align: center;
+    color: var(--tracking-muted);
+}
+
+.tracking-step .step-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 52px;
+    height: 52px;
+    border: 2px solid #dbe1e8;
+    border-radius: 50%;
+    background: #f8fafc;
+    color: #94a3b8;
+    font-size: 21px;
+    transition:
+        background 0.25s ease,
+        border-color 0.25s ease,
+        color 0.25s ease,
+        transform 0.25s ease;
+}
+
+.tracking-step .step-label {
+    max-width: 110px;
+    font-size: 13px;
+    font-weight: 650;
+    line-height: 1.5;
+}
+
+.tracking-step.completed .step-icon {
+    background: var(--tracking-success);
+    border-color: var(--tracking-success);
+    color: var(--tracking-white);
+}
+
+.tracking-step.active .step-icon {
+    background: var(--tracking-primary);
+    border-color: var(--tracking-primary);
+    color: var(--tracking-dark);
+    box-shadow: 0 0 0 6px rgba(255, 153, 0, 0.14);
+    transform: scale(1.04);
+}
+
+.tracking-step.completed .step-label {
+    color: #166534;
+}
+
+.tracking-step.active .step-label {
+    color: var(--tracking-text);
+    font-weight: 750;
+}
+
+.tracking-step.cancelled .step-icon {
+    background: #fee2e2;
+    border-color: #ef4444;
+    color: #b91c1c;
+}
+
+.tracking-step.cancelled .step-label {
+    color: #b91c1c;
+}
+
+.tracking-line {
+    position: relative;
+    flex: 1 1 auto;
+    height: 3px;
+    min-width: 10px;
+    margin-top: 24px;
+    border-radius: 999px;
+    background: #e2e8f0;
+    transition: background 0.25s ease;
+}
+
+.tracking-line.completed {
+    background: var(--tracking-success);
+}
+
+.tracking-line.active {
+    background: linear-gradient(
+        90deg,
+        var(--tracking-success),
+        var(--tracking-primary)
+    );
+}
+
+/* ---------- Tracking status message ---------- */
+
+#trackingMessage {
+    margin: 0 0 28px;
+    padding: 15px 18px;
+    border: 1px solid #dbeafe;
+    border-radius: 10px;
+    background: #eff6ff;
+    color: #1e40af;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+#trackingMessage[hidden] {
+    display: none;
+}
+
+/* ---------- Information sections ---------- */
+
+.tracking-order-info,
+.delivery-box {
+    margin-top: 26px;
+    padding: 24px;
+    border: 1px solid var(--tracking-border);
+    border-radius: 12px;
+    background: #ffffff;
+}
+
+.tracking-order-info h2,
+.delivery-box h2 {
+    margin-bottom: 20px;
+    font-size: 18px;
+    font-weight: 750;
+}
+
+.tracking-order-info {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px;
+}
+
+.tracking-order-info h2 {
+    grid-column: 1 / -1;
+}
+
+.tracking-info-item {
+    min-width: 0;
+}
+
+.tracking-info-item .info-label {
+    display: block;
+    margin-bottom: 7px;
+    color: var(--tracking-muted);
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.tracking-info-item .info-value {
+    display: block;
+    overflow-wrap: anywhere;
+    color: var(--tracking-text);
+    font-size: 15px;
+    font-weight: 700;
+}
+
+/* ---------- Delivery address ---------- */
+
+.delivery-box {
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+}
+
+.delivery-location-icon {
+    display: flex;
+    flex: 0 0 46px;
+    align-items: center;
+    justify-content: center;
+    width: 46px;
+    height: 46px;
+    border-radius: 12px;
+    background: #fff7ed;
+    color: #c2410c;
+    font-size: 22px;
+}
+
+.delivery-address-details {
+    min-width: 0;
+    flex: 1;
+}
+
+.delivery-address-details h2 {
+    margin-bottom: 14px;
+}
+
+#trackingAddressName {
+    display: block;
+    margin-bottom: 7px;
+    color: var(--tracking-text);
+    font-size: 15px;
+    font-weight: 750;
+    overflow-wrap: anywhere;
+}
+
+#trackingAddress,
+#trackingPhone {
+    margin-bottom: 8px;
+    color: var(--tracking-muted);
+    font-size: 14px;
+    line-height: 1.8;
+    overflow-wrap: anywhere;
+}
+
+#trackingPhone {
+    margin-bottom: 0;
+}
+
+/* ---------- Delivery partner ---------- */
+
+.delivery-partner {
+    margin-top: 24px;
+    padding: 20px;
+    border: 1px solid var(--tracking-border);
+    border-radius: 12px;
+    background: #ffffff;
+}
+
+.delivery-partner[hidden] {
+    display: none;
+}
+
+/* ---------- Tracking actions ---------- */
+
+.tracking-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 28px;
+}
+
+.tracking-actions a,
+.tracking-not-found .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 11px 20px;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    background: var(--tracking-primary);
+    color: var(--tracking-dark);
+    font-size: 14px;
+    font-weight: 750;
+    text-align: center;
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.tracking-actions a:hover,
+.tracking-not-found .btn:hover {
+    background: var(--tracking-primary-dark);
+    box-shadow: 0 5px 14px rgba(230, 138, 0, 0.18);
+    transform: translateY(-1px);
+}
+
+.tracking-actions a.secondary {
+    border-color: var(--tracking-border);
+    background: #ffffff;
+    color: var(--tracking-text);
+}
+
+.tracking-actions a.secondary:hover {
+    background: #f8fafc;
+    box-shadow: none;
+}
+
+/* ---------- Order not found ---------- */
+
+.tracking-not-found {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 30px 10px;
+    text-align: center;
+}
+
+.tracking-not-found-icon {
+    margin-bottom: 20px;
+    font-size: 54px;
+}
+
+.tracking-not-found h2 {
+    margin-bottom: 12px;
+    font-size: 26px;
+}
+
+.tracking-not-found p {
+    margin-bottom: 24px;
+    color: var(--tracking-muted);
+    font-size: 15px;
+    line-height: 1.8;
+}
+
+/* ---------- Responsive: tablets ---------- */
+
+@media (max-width: 768px) {
+    .tracking-page {
+        width: min(100% - 28px, 600px);
+        margin-top: 24px;
+    }
+
+    .tracking-card.card {
+        padding: 22px;
+    }
+
+    .tracking-header {
+        flex-direction: column;
+        gap: 14px;
+    }
+
+    .tracking-progress {
+        padding: 32px 0;
+    }
+
+    .tracking-step {
+        flex-basis: 75px;
+        gap: 10px;
+    }
+
+    .tracking-step .step-icon {
+        width: 44px;
+        height: 44px;
+        font-size: 18px;
+    }
+
+    .tracking-step .step-label {
+        font-size: 11px;
+        overflow-wrap: anywhere;
+    }
+
+    .tracking-line {
+        margin-top: 20px;
+    }
+
+    .tracking-order-info,
+    .delivery-box {
+        padding: 20px;
+    }
+}
+
+/* ---------- Responsive: mobile ---------- */
+
+@media (max-width: 480px) {
+    .tracking-page {
+        width: calc(100% - 20px);
+        margin: 18px auto 36px;
+    }
+
+    .tracking-page-header h1 {
+        font-size: 25px;
+    }
+
+    .tracking-card.card {
+        padding: 16px;
+        border-radius: 11px;
+    }
+
+    .tracking-progress {
+        padding: 26px 0;
+    }
+
+    .tracking-step {
+        flex-basis: 60px;
+        gap: 9px;
+    }
+
+    .tracking-step .step-icon {
+        width: 36px;
+        height: 36px;
+        border-width: 1.5px;
+        font-size: 15px;
+    }
+
+    .tracking-step .step-label {
+        font-size: 9px;
+        line-height: 1.4;
+    }
+
+    .tracking-line {
+        height: 2px;
+        min-width: 4px;
+        margin-top: 17px;
+    }
+
+    .tracking-order-info {
+        grid-template-columns: 1fr;
+        gap: 18px;
+        padding: 18px;
+    }
+
+    .tracking-order-info h2 {
+        grid-column: auto;
+        margin-bottom: 0;
+    }
+
+    .delivery-box {
+        gap: 12px;
+        padding: 18px;
+    }
+
+    .delivery-location-icon {
+        flex-basis: 38px;
+        width: 38px;
+        height: 38px;
+        font-size: 18px;
+    }
+
+    .tracking-actions {
+        flex-direction: column;
+    }
+
+    .tracking-actions a {
+        width: 100%;
+    }
+}
+
+/* ---------- Accessibility ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+    .tracking-step .step-icon,
+    .tracking-line,
+    .tracking-actions a {
+        transition: none;
+    }
+}
